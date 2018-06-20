@@ -6,8 +6,8 @@
     </head>
     <body>
         <header>
-            <img width="80px" height="50px" src="/static/kakapo.jpg">
             <a href={{"/mypage/{}".format(g.user.id)}}>mypage</a>
+            <a href={{"/profile/{}".format(g.user.id)}}>profile</a>
             <a href="/logout">logout</a>
             <div role="document" style="padding-top: 70px;">
                 {% with messages = get_flashed_messages() %}<!-- メッセージ種類によってフィルターもかけられる -->

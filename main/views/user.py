@@ -41,6 +41,14 @@ def mypage(user_id):
     return render_template("mypage.html", target_user=target_user)
 
 
+@app.route("/profile/<int:user_id>")
+@login_required
+def profile(user_id):
+    login_user_check(user_id)
+    target_user = User.query.get(user_id)  # primary keyでなら検索できる
+    return render_template("profile.html", target_user=target_user)
+
+
 @app.route("/user/delete/<int:user_id>", methods=['POST'])
 def del_user(user_id):
     target_user = User.query.get(user_id)  # primary keyでなら検索できる
