@@ -61,3 +61,12 @@ def edit(item_id):
         db.session.commit()
         return redirect(url_for("item.show", item_id=item.id))
     return render_template("edit_item.html", item=item)
+
+
+@app.route("/item/delete/<int:item_id>", methods=["POST"])
+def delete(item_id):
+    item = Item.query.get(item_id)
+    user = User.query.get(item.user_id)
+    db.session.delete(item)
+    db.session.commit()
+    return redirect(url_for("user.mypage", user_id=user.id))
