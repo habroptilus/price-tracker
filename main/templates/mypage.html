@@ -9,13 +9,15 @@ hello {{target_user.username}}!
         <th>最新の価格</th>
         <th>最低価格</th>
         <th>最終更新日時</th>
+        <th>商品掲載ページへ</th>
     </tr>
     {% for item in items %}
         <tr>
-            <td><a href="{{item.url}}">{{ item.item_name }}</a></td>
+            <td><a href="#">{{ item.item_name }}</a></td>
             <td>{{ item.latest_price }}円</td>
             <td>{{ item.lowest_price }}円</td>
             <td>{{item.updated_at.strftime("%m/%d %H:%M")}}</td>
+            <td><a href="{{item.url}}">リンク</a></td>
         </tr>
     {% endfor %}
 </table>
