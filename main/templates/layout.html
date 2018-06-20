@@ -7,9 +7,8 @@
     <body>
         <header>
             <img width="80px" height="50px" src="/static/kakapo.jpg">
-            <a href="/index">home</a>
+            <a href={{"/mypage/{}".format(g.user.id)}}>mypage</a>
             <a href="/logout">logout</a>
-            <a href="/test?msg=moti">test_page</a>
             <div role="document" style="padding-top: 70px;">
                 {% with messages = get_flashed_messages() %}<!-- メッセージ種類によってフィルターもかけられる -->
                     {% if messages %}

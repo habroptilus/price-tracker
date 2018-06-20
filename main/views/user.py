@@ -27,13 +27,13 @@ def signup():
             user = User(username, email, password)
             db.session.add(user)
             db.session.commit()
-            return redirect(url_for('user.show_user', user.id))
+            return redirect(url_for('user.mypage', user_id=user.id))
         else:
             return redirect(url_for('user.login'))
     return render_template("signup.html")
 
 
-@app.route("/user/<int:user_id>")
+@app.route("/mypage/<int:user_id>")
 @login_required
 def mypage(user_id):
     login_user_check(user_id)
