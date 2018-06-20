@@ -3,7 +3,7 @@ from flask import render_template, request, url_for
 from main.models import User
 from main import db
 from functools import wraps
-from main.views.utils import login_required
+from main.views.utils import login_required, login_user_check
 
 app = Blueprint("user", __name__)
 
@@ -36,13 +36,9 @@ def signup():
 @app.route("/user/<int:user_id>")
 @login_required
 def mypage(user_id):
-    if g.user.id == user_id:
-        target_user = User.query.get(user_id)  # primary keyでなら検索できる
-        return render_template("mypage.html", target_user=target_user)
-    else:
-        print(g.user.id)
-        print(user_id)
-        return redirect(url_for("user.login"))
+    login_user_check(user_id)
+    target_user = User.query.get(user_id)  # primary keyでなら検索できる
+    return render_template("mypage.html", target_user=target_user)
 
 
 @app.route("/user/delete/<int:user_id>", methods=['POST'])
@@ -58,6 +54,7 @@ def del_user(user_id):
 def edit_user(user_id):
     target_user = User.query.get(user_id)  # primary keyでなら検索できる
     if request.method == 'GET':
+        login_user_check(user_id)
         return render_template("edit_user.html", target_user=target_user)
     elif request.method == 'POST':
         username = request.form.get('username')
