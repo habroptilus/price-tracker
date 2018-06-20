@@ -57,13 +57,13 @@ def del_user(user_id):
     return redirect(url_for("user.login"))
 
 
-@app.route("/user/edit/<int:user_id>", methods=['GET', 'POST'])
+@app.route("/profile/edit/<int:user_id>", methods=['GET', 'POST'])
 @login_required
-def edit_user(user_id):
+def edit_profile(user_id):
     target_user = User.query.get(user_id)  # primary keyでなら検索できる
     if request.method == 'GET':
         login_user_check(user_id)
-        return render_template("edit_user.html", target_user=target_user)
+        return render_template("edit_profile.html", target_user=target_user)
     elif request.method == 'POST':
         username = request.form.get('username')
         email = request.form.get('email')
