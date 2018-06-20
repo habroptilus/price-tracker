@@ -36,3 +36,11 @@ def register(user_id):
         else:
             return redirect(url_for("item.register", user_id=user_id))
     return render_template("item_register.html", user_id=user_id)
+
+
+@app.route("/item/<int:item_id>")
+def show(item_id):
+    item = Item.query.get(item_id)  # primary keyでなら検索できる
+    if item:
+        return render_template("show_item.html", item=item)
+    return redirect(url_for("user.login"))

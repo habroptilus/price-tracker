@@ -13,7 +13,7 @@ hello {{target_user.username}}!
     </tr>
     {% for item in items %}
         <tr>
-            <td><a href="#">{{ item.item_name }}</a></td>
+            <td><a href="{{url_for("item.show",item_id=item.id)}}"">{{ item.item_name }}</a></td>
             <td>{{ item.latest_price }}円</td>
             <td>{{ item.lowest_price }}円</td>
             <td>{{item.updated_at.strftime("%m/%d %H:%M")}}</td>

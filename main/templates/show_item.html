@@ -1,0 +1,38 @@
+{% extends "layout.html" %}
+{% block content %}
+<div class="item-info">
+    <div class="item-info-header">アイテム情報</div>
+    <div class="item-info-body">
+        <table>
+            <tr>
+                <td>商品名</td>
+                <td>{{ item.item_name }}</td>
+            </tr>
+            <tr>
+                <td>最新価格</td>
+                <td>{{ item.latest_price }}</td>
+            </tr>
+            <tr>
+                <td>最低価格</td>
+                <td>{{ item.lowest_price }}</td>
+            </tr>
+            <tr>
+                <td>最終更新日時</td>
+                <td>{{item.updated_at.strftime("%m/%d %H:%M")}}</td>
+            </tr>
+            <tr>
+                <td>掲載ページへ</td>
+                <td><a href={{item.url}}>{{item.url}}</a></td>
+            </tr>
+        </table>
+    </div>
+    <div class="user-info-footer">
+        <a href="#">商品の設定を変更する</a>
+
+        <form class="" action="#" method="post" onClick="return confirm('削除します。\nよろしいですか？');">
+          <input type="submit" name="" value="アイテムの登録を解除する">
+        </form>
+    </div>
+</div>
+
+{% endblock %}
