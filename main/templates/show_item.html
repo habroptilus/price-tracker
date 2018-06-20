@@ -27,7 +27,7 @@
         </table>
     </div>
     <div class="user-info-footer">
-        <a href="#">商品の設定を変更する</a>
+        <a href="{{url_for("item.edit",item_id=item.id)}}">商品の設定を変更する</a>
 
         <form class="" action="#" method="post" onClick="return confirm('削除します。\nよろしいですか？');">
           <input type="submit" name="" value="アイテムの登録を解除する">

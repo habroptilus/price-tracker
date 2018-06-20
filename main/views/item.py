@@ -41,6 +41,23 @@ def register(user_id):
 @app.route("/item/<int:item_id>")
 def show(item_id):
     item = Item.query.get(item_id)  # primary keyでなら検索できる
+    user = User.query.get(item.user_id)
+    login_user_check(user.id)
     if item:
         return render_template("show_item.html", item=item)
     return redirect(url_for("user.login"))
+
+
+@app.route("/item/edit/<int:item_id>", methods=["GET", 'POST'])
+def edit(item_id):
+    item = Item.query.get(item_id)  # primary keyでなら検索できる
+    user = User.query.get(item.user_id)
+    login_user_check(user.id)
+    if request.method == "POST":
+        item_name = request.form.get('item_name')
+        url = request.form.get('url')
+        item.item_name = item_name
+        item.url = url
+        db.session.commit()
+        return redirect(url_for("item.show", item_id=item.id))
+    return render_template("edit_item.html", item=item)

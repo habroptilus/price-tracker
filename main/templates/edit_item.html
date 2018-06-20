@@ -1,0 +1,14 @@
+{% extends "layout.html" %}
+{% block content %}
+<div class="edit_item">
+    <h2>アイテム設定変更</h2>
+    <form class="" action="{{ url_for('item.edit',item_id=item.id) }}" method="post">
+        <label for="item_name">商品名</label>
+        <input type="text" size="30" name="item_name" value={{item.item_name}}>
+        <br>
+        <label for="url">URL</label>
+        <input type="text" size="30" name="url" value={{item.url}}>
+        <input type="submit">
+    </form>
+</div>
+{% endblock %}
