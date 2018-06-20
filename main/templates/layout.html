@@ -6,8 +6,9 @@
     </head>
     <body>
         <header>
-            <a href={{"/mypage/{}".format(g.user.id)}}>mypage</a>
-            <a href={{"/profile/{}".format(g.user.id)}}>profile</a>
+            <a href={{"/mypage/{}".format(g.user.id)}}>ホーム</a>
+            <a href="{{url_for("item.register",user_id=g.user.id)}}">アイテムを登録</a>
+            <a href={{"/profile/{}".format(g.user.id)}}>プロフィール</a>
             <a href="/logout">logout</a>
             <div role="document" style="padding-top: 70px;">
                 {% with messages = get_flashed_messages() %}<!-- メッセージ種類によってフィルターもかけられる -->

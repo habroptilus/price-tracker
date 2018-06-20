@@ -1,6 +1,7 @@
 from main import db
 from sqlalchemy.orm import synonym
 from werkzeug import check_password_hash, generate_password_hash
+from datetime import datetime
 
 
 class User(db.Model):
@@ -10,6 +11,8 @@ class User(db.Model):
     email = db.Column(db.String(100), unique=True, nullable=False)
     _password = db.Column('password', db.String(100),
                           nullable=False)  # privateなフィールド
+    items = db.relationship("Item", backref="user",
+                            lazy="dynamic", cascade="delete")
 
     def __init__(self, username, email, password):
         self.username = username
@@ -42,6 +45,25 @@ class User(db.Model):
     def __repr__(self):
         return u'<User id={self.id} email={self.email!r}>'.format(
             self=self)
+
+
+class Item(db.Model):
+    __tablename__ = "items"
+    id = db.Column(db.Integer, primary_key=True)
+    user_id = db.Column(db.Integer, db.ForeignKey("users.id"), nullable=False)
+    item_name = db.Column(db.String(30), default='', nullable=False)
+    url = db.Column(db.String(100), default='', nullable=False)
+    lowest_price = db.Column(db.Integer, nullable=False)
+    latest_price = db.Column(db.Integer, nullable=False)
+    updated_at = db.Column(db.DateTime, default=datetime.now)
+
+    def __init__(self, user_id, item_name, url, lowest_price, latest_price):
+        self.user_id = user_id
+        self.item_name = item_name
+        self.url = url
+        self.lowest_price = lowest_price
+        self.latest_price = latest_price
+        self.update_at = datetime.now
 
 
 def init_db():

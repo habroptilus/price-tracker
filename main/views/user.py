@@ -1,6 +1,6 @@
 from flask import Blueprint, redirect, flash, session, g
 from flask import render_template, request, url_for
-from main.models import User
+from main.models import User, Item
 from main import db
 from functools import wraps
 from main.views.utils import login_required, login_user_check
@@ -38,7 +38,8 @@ def signup():
 def mypage(user_id):
     login_user_check(user_id)
     target_user = User.query.get(user_id)  # primary keyでなら検索できる
-    return render_template("mypage.html", target_user=target_user)
+    items = db.session.query(Item).filter_by(user_id=user_id)
+    return render_template("mypage.html", target_user=target_user, items=items)
 
 
 @app.route("/profile/<int:user_id>")
