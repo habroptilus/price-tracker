@@ -27,6 +27,8 @@ def signup():
             user = User(username, email, password)
             db.session.add(user)
             db.session.commit()
+            session['user_id'] = user.id
+            flash('アカウントを作成しました！')
             return redirect(url_for('user.mypage', user_id=user.id))
         else:
             return redirect(url_for('user.login'))
