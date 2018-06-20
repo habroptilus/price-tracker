@@ -3,7 +3,7 @@ from flask import render_template, request, url_for
 from main.models import User, Item
 from main import db
 from functools import wraps
-from main.views.utils import login_required, login_user_check
+from main.views.utils import login_required, login_user_check, updated_items
 
 app = Blueprint("user", __name__)
 
@@ -41,7 +41,8 @@ def mypage(user_id):
     login_user_check(user_id)
     target_user = User.query.get(user_id)  # primary keyでなら検索できる
     items = db.session.query(Item).filter_by(user_id=user_id)
-    return render_template("mypage.html", target_user=target_user, items=items)
+    updated = updated_items(items)
+    return render_template("mypage.html", target_user=target_user, items=updated)
 
 
 @app.route("/profile/<int:user_id>")
