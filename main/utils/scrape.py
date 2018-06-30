@@ -36,3 +36,7 @@ def update_all_items():  # これを定期実行する
 
 def hello():  # test
     print("hello,world!")
+
+
+if __name__ == "__main__":
+    hello()
