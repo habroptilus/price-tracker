@@ -16,9 +16,9 @@ def configure_app(app):
     app.config.from_object(config[config_name])
 
     # センシティブな設定はインスタンスフォルダ内の設定で上書きする
-    app.config.from_pyfile('instance/config.cfg', silent=False)
+    app.config.from_pyfile('config.cfg', silent=False)
 
 
-application = Flask(__name__)
+application = Flask(__name__, instance_relative_config=True)
 configure_app(application)
 db = SQLAlchemy(application)
