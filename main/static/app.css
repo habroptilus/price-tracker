@@ -58,7 +58,7 @@ a{
 }
 
 
-div.login-box{
+div.login-box,div.signup-box{
     position: relative;
     border: solid lightgray;
     width: 40%;
@@ -68,7 +68,7 @@ div.login-box{
     background-color: lightgray;
 }
 
-div.login-header{
+div.login-header,div.signup-header{
     text-align: center;
     background-color: #0099CC;
     font-size: 2em;
@@ -76,14 +76,21 @@ div.login-header{
     color: white;
 }
 
-div.login-body{
+div.login-body, div.signup-body{
     padding-top: 3%;
 }
 div.login-body div{
     text-align: center;
     margin: 1%;
 }
-input.login{
+
+div.signup-body div{
+    text-align: center;
+    margin: 1%;
+}
+
+
+input.login,input.signup{
     width:60%;
     height: 40px;
     font-size: 1em;

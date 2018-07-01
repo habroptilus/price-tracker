@@ -6,19 +6,27 @@
         <link rel="stylesheet" href="/static/app.css">
     </head>
     <body>
-        <div class="create_user">
-            <p>ユーザー新規登録欄</p>
-            <form class="" action="{{ url_for('user.signup') }}" method="post">
-                <label for="username">Name:</label>
-                <input type="text" size="30" name="username">
-                <br>
-                <label for="email">email:</label>
-                <input type="text" size="30" name="email">
-                <br>
-                <label for="password">password:</label>
-                <input type="password" size="30" name="password">
-                <input type="submit">
-            </form>
+        <div class="signup-box">
+            <div class="signup-header">
+                Sign up
+            </div>
+            <div class="signup-body">
+                <form class="" action="{{ url_for('user.signup') }}" method="post">
+                    <div >
+                        <input type="text" size="30" name="username" placeholder="Name" class="signup">
+                    </div>
+                    <div>
+                        <input type="text" size="30" name="email" placeholder="Email" class="signup">
+
+                    </div>
+                    <div>
+                        <input type="password" size="30" name="password" placeholder="Password" class="signup">
+                    </div>
+                    <div>
+                        <input type="submit" class="submit-btn signup">
+                    </div>
+                </form>
+            </div>
         </div>
     </body>
 </html>
