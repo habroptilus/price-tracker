@@ -26,9 +26,10 @@
             </div>
             {% endif %}
             {% endwith %}
-
-        {% block content %}
-        <!-- ここにメインコンテンツを書く -->
-        {% endblock %}
+        <div class="content">
+            {% block content %}
+            <!-- ここにメインコンテンツを書く -->
+            {% endblock %}
+        </div>
     </body>
 </html>
