@@ -1,0 +1,27 @@
+body{
+    background-color: 	LemonChiffon; 
+}
+
+div.menu{
+    border: solid black;
+    background-color: tomato;
+}
+ul.header-ul {
+  display: flex;
+  /*justify-content: space-between;*/
+}
+li.header-li {
+  list-style-type: none;
+  background-color: tomato;
+  color: #000;
+  flex-grow: 1;
+  text-align: center;
+}
+li + li {
+  border-left: 1px solid #000;
+}
+li.header-li a{
+    color: white;
+    text-decoration: none;
+    font-size: 20px;
+}

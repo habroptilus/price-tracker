@@ -6,17 +6,22 @@
     </head>
     <body>
         <header>
-            <span>{{ "[ {} ]".format(g.user.username)}}</span>
-            <a href={{"/mypage/{}".format(g.user.id)}}>ホーム</a>
-            <a href="{{url_for("item.register",user_id=g.user.id)}}">アイテムを登録</a>
-            <a href={{"/profile/{}".format(g.user.id)}}>プロフィール</a>
-            <a href={{url_for("item.update_all",user_id=g.user.id)}}>最新価格を取得</a>
-            <a href="/logout" onClick="return confirm('ログアウトします。\nよろしいですか？');">logout</a>
+            <h2 class= "login-name">{{ "[ {} ]".format(g.user.username)}}</h2>
+
+            <div class="menu">
+                <ul class="header-ul">
+                    <li class= "header-li"><a href={{"/mypage/{}".format(g.user.id)}}>ホーム</a></span>
+                    <li class= "header-li"><a href="{{url_for("item.register",user_id=g.user.id)}}">アイテムを登録</a></span>
+                    <li class= "header-li"><a href={{"/profile/{}".format(g.user.id)}}>プロフィール</a></span>
+                    <li class= "header-li"><a href={{url_for("item.update_all",user_id=g.user.id)}}>最新価格を取得</a></span>
+                    <li class= "header-li"><a href="/logout" onClick="return confirm('ログアウトします。\nよろしいですか？');">logout</a></span>
+                </ul>
+            </div>
         </header>
 
             {% with messages = get_flashed_messages(category_filter=["info"]) %}
             {% if messages %}
-            <div class="flash">
+            <div class="flash info">
                 {{messages[0]}}
             </div>
             {% endif %}
