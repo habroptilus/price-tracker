@@ -83,7 +83,7 @@ div.login-body div{
     text-align: center;
     margin: 1%;
 }
-input{
+input.login{
     width:60%;
     height: 40px;
     font-size: 1em;
@@ -103,4 +103,9 @@ input{
 .submit-btn:hover {
     background: #67c5ff;
     color: white;
+}
+
+a.to-signup{
+    position: absolute;
+    right: 1%;
 }
