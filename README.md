@@ -35,11 +35,12 @@ pip install -r requirements.txt
     * __init.py__(application,dbの初期化)
     * models.py(モデル)
     * views.py(ルーティング、コントローラ)
+    * instance(非公開設定ファイル置き場)
+        * config.cfg(secret keyの設定)
 * manage.py(アプリ実行用スクリプト)
 * requirements.txt(ライブラリ一覧)
 * config.py(設定ファイル)
-* instance(非公開設定ファイル置き場)
-    * config.cfg(secret keyの設定)
+
 
 内部の仕組みは次の通り。
 

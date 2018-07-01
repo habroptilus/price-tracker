@@ -16,7 +16,7 @@ def configure_app(app):
     app.config.from_object(config[config_name])
 
     # センシティブな設定はインスタンスフォルダ内の設定で上書きする
-    app.config.from_pyfile('config.cfg', silent=True)
+    app.config.from_pyfile('config.cfg', silent=False)
 
 
 application = Flask(__name__)

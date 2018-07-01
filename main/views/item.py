@@ -6,6 +6,7 @@ from functools import wraps
 from main.views.utils import login_required, login_user_check
 from datetime import datetime
 from main.views import user
+from main.utils.scrape import get_price
 
 app = Blueprint("item", __name__)
 
@@ -26,8 +27,9 @@ def register(user_id):
         user_id = user_id
         item_name = request.form.get('item_name')
         url = request.form.get('url')
-        latest_price = 10000
-        lowest_price = 1000
+        price = get_price(url)
+        latest_price = price
+        lowest_price = price
         if item_name:
             item = Item(user_id, item_name, url, latest_price, lowest_price)
             db.session.add(item)
