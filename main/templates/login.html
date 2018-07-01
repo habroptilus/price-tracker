@@ -3,14 +3,30 @@
     <head>
         <meta charset="utf-8">
         <title>price tracker</title>
+        <link rel="stylesheet" href="/static/app.css">
     </head>
     <body>
-        <h2>Login</h2>
-        <form action="{{ url_for('user.login') }}" method=post>
-          Email:<input type=text name=email>
-          Password:<input type=password name=password>
-          <input type=submit value=Login>
-        </form>
         <a href="{{ url_for('user.signup')}}">Sign up</a>
+        <div class="login-box">
+            <div class="login-header">
+                Log in
+            </div>
+            <div class="login-body">
+                <form action="{{ url_for('user.login') }}" method=post>
+                    <div>
+                        <input type=text name=email placeholder="Email">
+                    </div>
+
+                    <div>
+                        <input type=password name=password placeholder="Password">
+                    </div>
+                    <div>
+                        <input type=submit value=Login class="submit-btn">
+                    </div>
+
+                </form>
+            </div>
+        </div>
+
     </body>
 </html>
