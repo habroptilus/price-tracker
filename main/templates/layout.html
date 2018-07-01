@@ -6,18 +6,11 @@
     </head>
     <body>
         <header>
+            <span>{{ "[ {} ]".format(g.user.username)}}</span>
             <a href={{"/mypage/{}".format(g.user.id)}}>ホーム</a>
             <a href="{{url_for("item.register",user_id=g.user.id)}}">アイテムを登録</a>
             <a href={{"/profile/{}".format(g.user.id)}}>プロフィール</a>
             <a href="/logout" onClick="return confirm('ログアウトします。\nよろしいですか？');">logout</a>
-            <div role="document" style="padding-top: 70px;">
-                {% with messages = get_flashed_messages() %}<!-- メッセージ種類によってフィルターもかけられる -->
-                    {% if messages %}
-                        {{messages[-1]}}
-                    {% endif %}
-                {% endwith %}
-            </div>
-
         </header>
         {% block content %}
         <!-- ここにメインコンテンツを書く -->

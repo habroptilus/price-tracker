@@ -28,7 +28,6 @@ def signup():
             db.session.add(user)
             db.session.commit()
             session['user_id'] = user.id
-            flash('アカウントを作成しました！')
             return redirect(url_for('user.mypage', user_id=user.id))
         else:
             return redirect(url_for('user.login'))
@@ -85,7 +84,6 @@ def login():
                                                 request.form['email'], request.form['password'])
         if authenticated:
             session['user_id'] = user.id
-            flash('You were logged in')
             return redirect(url_for('user.mypage', user_id=user.id))
     return render_template('login.html')
 
