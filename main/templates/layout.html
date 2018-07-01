@@ -10,6 +10,7 @@
             <a href={{"/mypage/{}".format(g.user.id)}}>ホーム</a>
             <a href="{{url_for("item.register",user_id=g.user.id)}}">アイテムを登録</a>
             <a href={{"/profile/{}".format(g.user.id)}}>プロフィール</a>
+            <a href={{url_for("item.update_all",user_id=g.user.id)}}>最新価格を取得</a>
             <a href="/logout" onClick="return confirm('ログアウトします。\nよろしいですか？');">logout</a>
         </header>
         {% block content %}

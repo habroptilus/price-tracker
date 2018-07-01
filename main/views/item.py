@@ -6,7 +6,7 @@ from functools import wraps
 from main.views.utils import login_required, login_user_check
 from datetime import datetime
 from main.views import user
-from main.utils.scrape import get_price
+from main.utils.scrape import get_price, update_items
 
 app = Blueprint("item", __name__)
 
@@ -72,3 +72,10 @@ def delete(item_id):
     db.session.delete(item)
     db.session.commit()
     return redirect(url_for("user.mypage", user_id=user.id))
+
+
+@app.route("/item/update_all/<int:user_id>")
+def update_all(user_id):
+    items = db.session.query(Item).filter_by(user_id=user_id)
+    update_items(items)
+    return redirect(url_for("user.mypage", user_id=user_id))

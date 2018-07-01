@@ -3,13 +3,17 @@ from bs4 import BeautifulSoup
 import re
 from main.models import User, Item
 from main import db
+from datetime import datetime
 
 
 def get_price(url):
-    soup = BeautifulSoup(urllib.request.urlopen(url).read(), "html.parser")
-    # price = soup.find("span", id="priceblock_ourprice").string
-    price = soup.find_all("span", id=re.compile("priceblock"))[0].string
-    return int(re.sub(r'\D', '', price))
+    try:
+        soup = BeautifulSoup(urllib.request.urlopen(url).read(), "html.parser")
+        price = soup.find_all("span", id=re.compile("priceblock"))[0].string
+        price = price.split("-")[0]
+        return int(re.sub(r'\D', '', price))
+    except:
+        return -1
 
 
 def update_price(item_id, now_price):
@@ -21,7 +25,7 @@ def update_price(item_id, now_price):
     return
 
 
-def updated_items(items):
+def update_items(items):
     for item in items:
         price = get_price(item.url)
         update_price(item.id, price)
@@ -30,7 +34,7 @@ def updated_items(items):
 
 def update_all_items():  # これを定期実行する
     items = Item.query.all()
-    updated_items(items)
+    update_items(items)
     return
 
 
