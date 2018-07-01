@@ -6,24 +6,25 @@
         <link rel="stylesheet" href="/static/app.css">
     </head>
     <body>
-        <div class="signup-box">
-            <div class="signup-header">
+        <a href="{{ url_for('user.login')}}" class="to-login">Log in</a>
+        <div class="content-box">
+            <div class="content-header">
                 Sign up
             </div>
-            <div class="signup-body">
+            <div class="content-body">
                 <form class="" action="{{ url_for('user.signup') }}" method="post">
-                    <div >
-                        <input type="text" size="30" name="username" placeholder="Name" class="signup">
+                    <div>
+                        <input type="text" size="30" name="username" placeholder="Name" class="content">
                     </div>
                     <div>
-                        <input type="text" size="30" name="email" placeholder="Email" class="signup">
+                        <input type="text" size="30" name="email" placeholder="Email" class="content">
 
                     </div>
                     <div>
-                        <input type="password" size="30" name="password" placeholder="Password" class="signup">
+                        <input type="password" size="30" name="password" placeholder="Password" class="content">
                     </div>
                     <div>
-                        <input type="submit" class="submit-btn signup">
+                        <input type="submit" class="submit-btn content">
                     </div>
                 </form>
             </div>

@@ -48,17 +48,21 @@ thead.item-list tr th {
   color: #fff;
   text-align: center;
 }
+tbody.item-list tr{
+    background-color: lightgray;
+}
 
 tbody.item-list tr:nth-of-type(2n) {
   background: #f5f5f5;
 }
+
 
 a{
     text-decoration: none;
 }
 
 
-div.login-box,div.signup-box{
+div.content-box{
     position: relative;
     border: solid lightgray;
     width: 40%;
@@ -68,7 +72,7 @@ div.login-box,div.signup-box{
     background-color: lightgray;
 }
 
-div.login-header,div.signup-header{
+div.content-header{
     text-align: center;
     background-color: #0099CC;
     font-size: 2em;
@@ -76,21 +80,15 @@ div.login-header,div.signup-header{
     color: white;
 }
 
-div.login-body, div.signup-body{
+div.content-body{
     padding-top: 3%;
 }
-div.login-body div{
+div.content-body div{
     text-align: center;
     margin: 1%;
 }
 
-div.signup-body div{
-    text-align: center;
-    margin: 1%;
-}
-
-
-input.login,input.signup{
+input.content{
     width:60%;
     height: 40px;
     font-size: 1em;
@@ -112,7 +110,7 @@ input.login,input.signup{
     color: white;
 }
 
-a.to-signup{
+a.to-signup,a.to-login{
     position: absolute;
     right: 1%;
 }
