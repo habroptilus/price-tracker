@@ -13,6 +13,15 @@
             <a href={{url_for("item.update_all",user_id=g.user.id)}}>最新価格を取得</a>
             <a href="/logout" onClick="return confirm('ログアウトします。\nよろしいですか？');">logout</a>
         </header>
+
+            {% with messages = get_flashed_messages(category_filter=["info"]) %}
+            {% if messages %}
+            <div class="flash">
+                {{messages[0]}}
+            </div>
+            {% endif %}
+            {% endwith %}
+
         {% block content %}
         <!-- ここにメインコンテンツを書く -->
         {% endblock %}

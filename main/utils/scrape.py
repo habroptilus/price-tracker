@@ -13,7 +13,7 @@ def get_price(url):
         price = price.split("-")[0]
         return int(re.sub(r'\D', '', price))
     except:
-        return -1
+        return None
 
 
 def update_price(item_id, now_price):
@@ -28,7 +28,8 @@ def update_price(item_id, now_price):
 def update_items(items):
     for item in items:
         price = get_price(item.url)
-        update_price(item.id, price)
+        if price is not None:
+            update_price(item.id, price)
     return
 
 
