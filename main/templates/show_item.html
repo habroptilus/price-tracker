@@ -3,35 +3,38 @@
 <div class="item-info">
     <div class="item-info-header">アイテム情報</div>
     <div class="item-info-body">
-        <table>
+        <table class="item-info">
             <tr>
-                <td>商品名</td>
-                <td>{{ item.item_name }}</td>
+                <th class="t_top item-info">商品名</td>
+                <td class="t_top item-info">{{ item.item_name }}</td>
             </tr>
             <tr>
-                <td>最新価格</td>
-                <td>{{ item.latest_price }}円</td>
+                <th class="item-info">最新価格</td>
+                <td class="item-info">{{ item.latest_price }}円</td>
             </tr>
             <tr>
-                <td>最低価格</td>
-                <td>{{ item.lowest_price }}円</td>
+                <th class="item-info">最低価格</td>
+                <td class="item-info">{{ item.lowest_price }}円</td>
             </tr>
             <tr>
-                <td>最終更新日時</td>
-                <td>{{item.updated_at.strftime("%m/%d %H:%M")}}</td>
+                <th class="item-info">最終更新日時</td>
+                <td class="item-info">{{item.updated_at.strftime("%m/%d %H:%M")}}</td>
             </tr>
             <tr>
-                <td>掲載ページへ</td>
-                <td><a href={{item.url}}>リンク</a></td>
+                <th class="item-info">掲載ページへ</td>
+                <td class="item-info"><a href={{item.url}}>リンク</a></td>
             </tr>
         </table>
     </div>
-    <div class="user-info-footer">
-        <a href="{{url_for("item.edit",item_id=item.id)}}">商品の設定を変更する</a>
-
-        <form class="" action="{{url_for("item.delete",item_id=item.id)}}" method="post" onClick="return confirm('削除します。\nよろしいですか？');">
-          <input type="submit" name="" value="アイテムの登録を解除する">
-        </form>
+    <div class="item-info-footer">
+        <div>
+            <a href="{{url_for("item.edit",item_id=item.id)}}" class="submit-btn content">商品の設定を変更する</a>
+        </div>
+        <div>
+            <form class="" action="{{url_for("item.delete",item_id=item.id)}}" method="post" onClick="return confirm('削除します。\nよろしいですか？');">
+              <input type="submit" name="" value="登録を解除する" class="submit-btn content danger">
+            </form>
+        </div>
     </div>
 </div>
 
