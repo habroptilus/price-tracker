@@ -1,14 +1,21 @@
 {% extends "layout.html" %}
 {% block content %}
-<div class="create_item">
-    <h2>アイテム新規登録欄</h2>
-    <form class="" action="{{ url_for('item.register',user_id=user_id) }}" method="post">
-        <label for="item_name">商品名</label>
-        <input type="text" size="30" name="item_name">
-        <br>
-        <label for="url">URL</label>
-        <input type="text" size="30" name="url">
-        <input type="submit">
-    </form>
+<div class="create_item content-box">
+    <div class="content-header">
+        アイテム登録
+    </div>
+    <div class="content-body">
+        <form class="" action="{{ url_for('item.register',user_id=user_id) }}" method="post">
+            <div>
+                <input type="text" size="30" name="item_name" class="content" placeholder="商品名">
+            </div>
+            <div>
+                <input type="text" size="30" name="url" class="content" placeholder="URL">
+            </div>
+            <div>
+                <input type="submit" class="content submit-btn" value="登録">
+            </div>
+        </form>
+    </div>
 </div>
 {% endblock %}
