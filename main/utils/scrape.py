@@ -4,6 +4,7 @@ import re
 from main.models import User, Item
 from main import db
 from datetime import datetime
+from main.utils.graph import draw_graph
 
 
 def get_price(url):
@@ -30,6 +31,7 @@ def update_items(items):
         price = get_price(item.url)
         if price is not None:
             update_price(item.id, price)
+            draw_graph(item.id)
     return
 
 

@@ -7,6 +7,7 @@ from main.views.utils import login_required, login_user_check
 from datetime import datetime
 from main.views import user
 from main.utils.scrape import get_price, update_items
+from main.utils.graph import draw_graph
 
 app = Blueprint("item", __name__)
 
@@ -37,6 +38,7 @@ def register(user_id):
             item = Item(user_id, item_name, url, latest_price, lowest_price)
             db.session.add(item)
             db.session.commit()
+            draw_graph(item.id)
             return redirect(url_for('user.mypage', user_id=user_id))
         else:
             return redirect(url_for("item.register", user_id=user_id))
