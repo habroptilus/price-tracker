@@ -74,7 +74,7 @@ def edit_profile(user_id):
         target_user.email = email
         target_user.password = password
         db.session.commit()
-        return redirect(url_for("user.mypage", user_id=user_id))
+        return redirect(url_for("user.profile", user_id=user_id))
 
 
 @app.route('/', methods=['GET', 'POST'])

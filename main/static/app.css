@@ -103,6 +103,12 @@ input.content{
     border-radius: 3px;
     transition: .4s;
     margin-top: 3%;
+    background-color: white;
+}
+
+.danger{
+    color:tomato;
+    border-color: tomato;
 }
 
 .submit-btn:hover {
@@ -110,7 +116,19 @@ input.content{
     color: white;
 }
 
+
+.danger:hover{
+    background-color: tomato;
+}
+
 a.to-signup,a.to-login{
     position: absolute;
     right: 1%;
+}
+
+table.profile{
+    margin: auto;
+}
+div.content-footer{
+    text-align: center;
 }

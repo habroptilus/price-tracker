@@ -1,29 +1,31 @@
 {% extends "layout.html" %}
 {% block content %}
-<div class="user-info">
-    <div class="user-info-header">ユーザー情報</div>
-    <div class="user-info-body">
-        <table>
+<div class="user-info content-box">
+    <div class="content-header">
+        ユーザー情報
+    </div>
+    <div class="content-body">
+        <table class="profile">
             <tr>
-                <td>ID</td>
-                <td>{{ target_user.id }}</td>
-            </tr>
-            <tr>
-                <td>Name</td>
+                <td>ユーザー名:</td>
                 <td>{{ target_user.username }}</td>
             </tr>
             <tr>
-                <td>email</td>
+                <td>e-mail:</td>
                 <td>{{ target_user.email }}</td>
             </tr>
         </table>
     </div>
-    <div class="user-info-footer">
-        <a href={{"edit/{}".format(target_user.id)}}>変更する</a>
+    <div class="content-footer">
+        <div>
+            <a href={{"edit/{}".format(target_user.id)}} class="submit-btn content">登録内容を変更する</a>
+        </div>
+        <div>
+            <form class="" action={{"/user/delete/{}".format(target_user.id)}} method="post" onClick="return confirm('削除します。\nよろしいですか？');">
+              <input type="submit" name="" value="ユーザーを削除する" class="submit-btn content danger">
+            </form>
+        </div>
 
-        <form class="" action={{"/user/delete/{}".format(target_user.id)}} method="post" onClick="return confirm('削除します。\nよろしいですか？');">
-          <input type="submit" name="" value="ユーザーを削除する">
-        </form>
     </div>
 
 </div>
