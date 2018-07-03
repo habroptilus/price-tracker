@@ -1,7 +1,17 @@
 import urllib.request
 from bs4 import BeautifulSoup
 import re
-from main.models import User, Item
+
+from os import path, pardir
+import sys
+import os
+
+current_dir = path.abspath(path.dirname(__file__))  # スクリプトのディレクトリ
+parent_dir = path.abspath(path.join(current_dir, pardir))  # スクリプトの親ディレクトリ
+sys.path.append(parent_dir)
+
+
+from main.models import Item
 from main import db
 from datetime import datetime
 from main.utils.graph import draw_graph
