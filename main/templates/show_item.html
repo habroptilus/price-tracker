@@ -38,5 +38,14 @@
     </div>
 </div>
 <img src={{"/static/graph/item{}.png".format(item.id)}} alt="hoge"/>
+<div class="prices">
+    <ol>
+        {% for price in prices %}
+            <li>{{price.body}}</li>
+        {% endfor %}
+    </ol>
+
+
+</div>
 
 {% endblock %}

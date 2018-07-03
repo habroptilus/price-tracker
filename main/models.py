@@ -56,6 +56,8 @@ class Item(db.Model):
     lowest_price = db.Column(db.Integer, nullable=False)
     latest_price = db.Column(db.Integer, nullable=False)
     updated_at = db.Column(db.DateTime, default=datetime.now)
+    prices = db.relationship("Price", backref="item",
+                             lazy="dynamic", cascade="delete")
 
     def __init__(self, user_id, item_name, url, lowest_price, latest_price):
         self.user_id = user_id
@@ -64,6 +66,18 @@ class Item(db.Model):
         self.lowest_price = lowest_price
         self.latest_price = latest_price
         self.update_at = datetime.now
+
+
+class Price(db.Model):
+    __tablename__ = "prices"
+    id = db.Column(db.Integer, primary_key=True)
+    item_id = db.Column(db.Integer, db.ForeignKey("items.id"), nullable=False)
+    body = db.Column(db.Integer, nullable=False)
+    scraped_at = db.Column(db.DateTime, default=datetime.now())
+
+    def __init__(self, item_id, body):
+        self.item_id = item_id
+        self.body = body
 
 
 def init_db():

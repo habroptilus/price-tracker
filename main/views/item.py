@@ -1,6 +1,6 @@
 from flask import Blueprint, redirect, flash, session, g
 from flask import render_template, request, url_for
-from main.models import User, Item
+from main.models import User, Item, Price
 from main import db
 from functools import wraps
 from main.views.utils import login_required, login_user_check
@@ -38,6 +38,9 @@ def register(user_id):
             item = Item(user_id, item_name, url, latest_price, lowest_price)
             db.session.add(item)
             db.session.commit()
+            p = Price(item.id, price)
+            db.session.add(p)
+            db.session.commit()
             draw_graph(item.id)
             return redirect(url_for('user.mypage', user_id=user_id))
         else:
@@ -50,8 +53,9 @@ def show(item_id):
     item = Item.query.get(item_id)  # primary keyでなら検索できる
     user = User.query.get(item.user_id)
     login_user_check(user.id)
+    prices = db.session.query(Price).filter_by(item_id=item_id)
     if item:
-        return render_template("show_item.html", item=item)
+        return render_template("show_item.html", item=item, prices=prices)
     return redirect(url_for("user.login"))
 
 

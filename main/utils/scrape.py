@@ -1,7 +1,7 @@
 import urllib.request
 from bs4 import BeautifulSoup
 import re
-from main.models import Item
+from main.models import Item, Price
 from main import db
 from datetime import datetime
 from main.utils.graph import draw_graph
@@ -22,6 +22,9 @@ def update_price(item_id, now_price):
     item.lowest_price = min(item.lowest_price, now_price)
     item.latest_price = now_price
     item.updated_at = datetime.now()
+    db.session.commit()
+    p = Price(item.id, now_price)
+    db.session.add(p)
     db.session.commit()
     return
 
