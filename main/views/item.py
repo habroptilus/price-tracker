@@ -53,9 +53,8 @@ def show(item_id):
     item = Item.query.get(item_id)  # primary keyでなら検索できる
     user = User.query.get(item.user_id)
     login_user_check(user.id)
-    prices = db.session.query(Price).filter_by(item_id=item_id)
     if item:
-        return render_template("show_item.html", item=item, prices=prices)
+        return render_template("show_item.html", item=item)
     return redirect(url_for("user.login"))
 
 
