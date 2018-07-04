@@ -32,7 +32,7 @@ def register(user_id):
         url = request.form.get('url')
         price = get_price(url)
         if price is None:
-            flash("商品価格の取得に失敗しました。", "info")
+            flash("商品価格の取得に失敗しました。もう一度お試しください。", "info")
             return redirect(url_for("item.register", user_id=user_id))
         latest_price = price
         lowest_price = price
