@@ -8,6 +8,7 @@ from datetime import datetime
 from main.views import user
 from main.utils.scrape import get_price, update_items
 from main.utils.graph import draw_graph
+import glob
 
 app = Blueprint("item", __name__)
 
@@ -53,8 +54,9 @@ def show(item_id):
     item = Item.query.get(item_id)  # primary keyでなら検索できる
     user = User.query.get(item.user_id)
     login_user_check(user.id)
+    path_list = glob.glob('main/static/graph/item{}*'.format(item_id))
     if item:
-        return render_template("show_item.html", item=item)
+        return render_template("show_item.html", item=item, img_path=path_list[0][4:])
     return redirect(url_for("user.login"))
 
 

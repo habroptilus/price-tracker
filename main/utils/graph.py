@@ -1,6 +1,6 @@
 import matplotlib.pyplot as plt
 import random
-from main.models import Price
+from main.models import Price, Item
 from main import db
 import matplotlib.dates as mdates
 import os
@@ -12,10 +12,10 @@ def draw_graph(item_id):
 
     # 以前のグラフを消去
     path_list = glob.glob('main/static/graph/item{}*'.format(item_id))
-    print(path_list)
     for path in path_list:
         os.remove(path)
 
+    # グラフの作成
     prices = db.session.query(Price).filter_by(item_id=item_id)
     # X軸データ
     x = [price.scraped_at for price in prices]

@@ -134,7 +134,7 @@ div.content-footer{
 }
 
 div.item-info{
-    width: 300px;
+    width: 650px;
     border: solid lightgray;
     background-color: white;
 }
@@ -177,4 +177,24 @@ td.item-info {
 	border-right: #e3e3e3 1px solid;
 	text-align: left;
 	padding: 10px;
+}
+
+.parent::after{
+  content: "";
+  display: block;
+  clear: both;
+}
+
+.left{
+  float:left;
+}
+
+.right{
+  float:right;
+}
+
+img.img-graph{
+    height: 410px;
+    width: 650px;
+    border: solid lightgray;
 }
