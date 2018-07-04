@@ -30,7 +30,7 @@ pip install -r requirements.txt
 ## ディレクトリ構成
 
 * main
-    * static(css,JS)
+    * static(css,JS,graph)
     * templates(html)
     * __init.py__(application,dbの初期化)
     * models.py(モデル)
