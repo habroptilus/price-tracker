@@ -5,18 +5,29 @@ from main import db
 import matplotlib.dates as mdates
 import os
 import glob
-from datetime import datetime
+from datetime import datetime, timedelta
+
+
+"""
+グラフ作成に必要なスクレイピング期間
+"""
+period_hour = 1
+period_min = 10
 
 
 def draw_graph(item_id):
 
+    # グラフの作成
+    prices = list(db.session.query(Price).filter_by(item_id=item_id))
+    prices = sorted(prices, key=lambda x: x.scraped_at)
+    oldest_time = prices[0].scraped_at
+    latest_time = prices[-1].scraped_at
+    if oldest_time + timedelta(minutes=period_min) > latest_time:
+        return
     # 以前のグラフを消去
     path_list = glob.glob('main/static/graph/item{}*'.format(item_id))
     for path in path_list:
         os.remove(path)
-
-    # グラフの作成
-    prices = list(db.session.query(Price).filter_by(item_id=item_id))
 
     # X軸データ
     x = [price.scraped_at for price in prices]

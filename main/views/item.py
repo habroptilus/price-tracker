@@ -9,6 +9,7 @@ from main.views import user
 from main.utils.scrape import get_price, update_items
 from main.utils.graph import draw_graph
 import glob
+import os
 
 app = Blueprint("item", __name__)
 
@@ -81,6 +82,10 @@ def edit(item_id):
 
 @app.route("/item/delete/<int:item_id>", methods=["POST"])
 def delete(item_id):
+    # グラフを消去
+    path_list = glob.glob('main/static/graph/item{}*'.format(item_id))
+    for path in path_list:
+        os.remove(path)
     item = Item.query.get(item_id)
     user = User.query.get(item.user_id)
     db.session.delete(item)

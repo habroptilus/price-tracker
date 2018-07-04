@@ -106,6 +106,4 @@ venv.bak/
 *.db
 __pycache__
 
-graph/*
-!.gitkeep
-!nodata.png
+item*.png
