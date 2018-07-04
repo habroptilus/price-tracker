@@ -108,3 +108,4 @@ __pycache__
 
 graph/*
 !.gitkeep
+!nodata.png
