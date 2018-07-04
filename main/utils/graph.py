@@ -16,7 +16,8 @@ def draw_graph(item_id):
         os.remove(path)
 
     # グラフの作成
-    prices = db.session.query(Price).filter_by(item_id=item_id)
+    prices = list(db.session.query(Price).filter_by(item_id=item_id))
+
     # X軸データ
     x = [price.scraped_at for price in prices]
     # Y軸データ

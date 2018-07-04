@@ -55,8 +55,12 @@ def show(item_id):
     user = User.query.get(item.user_id)
     login_user_check(user.id)
     path_list = glob.glob('main/static/graph/item{}*'.format(item_id))
+    if len(path_list) == 0:
+        img_path = "/static/graph/nodata.png"
+    else:
+        img_path = path_list[0][4:]
     if item:
-        return render_template("show_item.html", item=item, img_path=path_list[0][4:])
+        return render_template("show_item.html", item=item, img_path=img_path)
     return redirect(url_for("user.login"))
 
 
