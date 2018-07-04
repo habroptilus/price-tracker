@@ -105,4 +105,4 @@ venv.bak/
 
 *.db
 __pycache__
-graph/
+item*.png
